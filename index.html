@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyXP - Level Up Your Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">S</span>
+            <span>Study<span class="red">XP</span></span>
+        </div>
+
+        <div class="nav-label">MENU</div>
+
+        <nav>
+            <button class="nav-btn active" data-page="dashboard">▦ Dashboard</button>
+            <button class="nav-btn" data-page="timer">◷ Focus Timer</button>
+            <button class="nav-btn" data-page="statistics">▤ Statistics</button>
+        </nav>
+
+        <div class="nav-label">YOUR ACCOUNT</div>
+        <div class="player-card" id="playerProfileCard" style="cursor: pointer;" title="Click to edit profile">
+            <div class="avatar" id="sidebarAvatar">🎮</div>
+            <div>
+                <strong id="playerName">Player One</strong>
+                <small id="playerRank">Beginner</small>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <span>STUDYXP</span>
+            <small>Version 1.0.0</small>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h2 id="pageTitle">Dashboard</h2>
+                <p>Welcome back, player. Ready to level up?</p>
+            </div>
+            <div class="top-level">
+                <span>⚡</span>
+                <strong id="topXP">0 XP</strong>
+            </div>
+        </header>
+
+        <!-- DASHBOARD PAGE -->
+        <section class="page active" id="dashboard">
+
+            <div class="welcome-banner">
+                <div>
+                    <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
+                    <h1>Ready to <span class="red">focus?</span></h1>
+                    <p>Every minute counts. Every session makes you stronger.</p>
+                    <button class="primary-btn" data-goto="timer">
+                        Start Studying →
+                    </button>
+                </div>
+                <div class="banner-icon">🎯</div>
+            </div>
+
+            <div class="section-heading">
+                <h3>Player Overview</h3>
+                <span>YOUR PROGRESS</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <span>Total XP</span>
+                    <h2 id="dashboardXP">0</h2>
+                    <small>Lifetime experience</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <span>Current Level</span>
+                    <h2 id="dashboardLevel">1</h2>
+                    <small id="dashboardRank">Beginner rank</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⏱</div>
+                    <span>Study Time</span>
+                    <h2 id="dashboardTime">0h 0m</h2>
+                    <small>Total focused time</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <span>Sessions</span>
+                    <h2 id="dashboardSessions">0</h2>
+                    <small>Completed sessions</small>
+                </div>
+            </div>
+
+            <div class="content-grid">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>Level Progress</h3>
+                        <span id="levelLabel">LEVEL 1</span>
+                    </div>
+
+                    <div class="level-info">
+                        <strong id="levelXP">0 XP</strong>
+                        <span id="nextLevelXP">100 XP needed</span>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="levelProgress"></div>
+                    </div>
+
+                    <p class="muted">Keep studying to unlock your next level.</p>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>Daily Goal</h3>
+                        <span>60 MINUTES</span>
+                    </div>
+
+                    <div class="goal-info">
+                        <h2 id="goalTime">0 / 60</h2>
+                        <span>minutes studied today</span>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="goalProgress"></div>
+                    </div>
+                    <p class="muted" id="goalMessage">Your daily challenge awaits!</p>
+                </div>
+
+            </div>
+
+            <div class="panel history-panel">
+                <div class="panel-heading">
+                    <h3>Recent Sessions</h3>
+                    <button class="text-btn" data-goto="statistics">View all →</button>
+                </div>
+                <div id="recentSessions">
+                    <p class="empty-state">No sessions yet. Start your first focus session!</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- TIMER PAGE -->
+        <section class="page" id="timer">
+
+            <div class="timer-layout">
+
+                <div class="timer-panel panel">
+                    <span class="eyebrow">FOCUS ARENA</span>
+                    <h1>Time to <span class="red">focus.</span></h1>
+
+                    <div class="timer-modes">
+                        <button class="mode-btn active" data-mode="focus">Focus</button>
+                        <button class="mode-btn" data-mode="short">Short Break</button>
+                        <button class="mode-btn" data-mode="long">Long Break</button>
+                    </div>
+
+                    <div class="timer-circle" id="timerCircle">
+                        <div class="timer-inner">
+                            <span id="timerStatus">READY</span>
+                            <h2 id="timerDisplay">25:00</h2>
+                            <small id="timerSubtitle">FOCUS SESSION</small>
+                        </div>
+                    </div>
+
+                    <div class="timer-controls">
+                        <button class="primary-btn" id="startBtn">▶ Start</button>
+                        <button class="secondary-btn" id="resetBtn">↻ Reset</button>
+                    </div>
+
+                    <p class="timer-hint" id="timerHint">Stay focused. Your next level awaits.</p>
+                </div>
+
+                <div class="panel timer-settings">
+                    <h3>Session Settings</h3>
+
+                    <label for="subjectSelect">Choose your subject</label>
+                    <select id="subjectSelect">
+                        <option>Bangla</option>
+                        <option>English</option>
+                        <option>Mathematics</option>
+                        <option>Physics</option>
+                        <option>Chemistry</option>
+                        <option>Biology</option>
+                        <option>ICT</option>
+                        <option>Other</option>
+                    </select>
+
+                    <div class="settings-divider"></div>
+
+                    <h3>Timer Durations</h3>
+
+                    <label for="focusDuration">Focus (minutes)</label>
+                    <input type="number" id="focusDuration" value="25" min="1" max="180">
+
+                    <label for="shortDuration">Short break (minutes)</label>
+                    <input type="number" id="shortDuration" value="5" min="1" max="60">
+
+                    <label for="longDuration">Long break (minutes)</label>
+                    <input type="number" id="longDuration" value="15" min="1" max="60">
+
+                    <button class="secondary-btn full-btn" id="saveSettings">Save Settings</button>
+
+                    <div class="xp-preview">
+                        <span>⚡ SESSION REWARD</span>
+                        <strong>+50 XP</strong>
+                        <small>For completing a 25-minute focus session.</small>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- STATISTICS PAGE -->
+        <section class="page" id="statistics">
+
+            <div class="section-heading">
+                <h3>Your Performance</h3>
+                <span>PLAYER STATISTICS</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <span>Total XP</span>
+                    <h2 id="statsXP">0</h2>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱</div>
+                    <span>Total Study Time</span>
+                    <h2 id="statsTime">0h 0m</h2>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <span>Sessions</span>
+                    <h2 id="statsSessions">0</h2>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <span>Level</span>
+                    <h2 id="statsLevel">1</h2>
+                </div>
+            </div>
+
+            <div class="panel history-panel">
+                <div class="panel-heading">
+                    <h3>Session History</h3>
+                    <span>COMPLETED FOCUS SESSIONS</span>
+                </div>
+                <div id="allSessions">
+                    <p class="empty-state">Your session history will appear here.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <span>© 2026 Rafid & Studio</span>
+            <span>FOCUS • STUDY • LEVEL UP</span>
+        </footer>
+
+    </main>
+</div>
+
+<!-- LOGIN / PROFILE MODAL -->
+<div class="modal-overlay" id="loginModal">
+    <div class="modal-content panel">
+        <h3>Player Profile</h3>
+        <p class="muted">Enter your name and choose your avatar to level up.</p>
+        
+        <label for="nameInput">Player Name</label>
+        <input type="text" id="nameInput" value="Player One" maxlength="20">
+
+        <label>Choose Avatar</label>
+        <div class="avatar-selector">
+            <button type="button" class="avatar-option active">🎮</button>
+            <button type="button" class="avatar-option">🚀</button>
+            <button type="button" class="avatar-option">⚡</button>
+            <button type="button" class="avatar-option">🦊</button>
+            <button type="button" class="avatar-option">🧙‍♂️</button>
+            <button type="button" class="avatar-option">🎯</button>
+        </div>
+
+        <button class="primary-btn full-btn" id="saveProfileBtn" style="margin-top: 20px;">Save & Continue →</button>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
